@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "date-fns": "^2.29.2",
+    "firebase": "^9.9.4",
+    "package": "^1.0.1",
+    "react-loading-skeleton": "^3.1.0",
+    "react-router-dom": "^6.3.0"
+  }
+}
