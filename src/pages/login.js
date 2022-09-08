@@ -45,17 +45,18 @@ export default function Login() {
                 // ...
               })
               .catch((error) => {
+                  console.error(error.message, "error message")
+                  console.error(error, "celoten error")
+                  const errorCode = error.code;
+                  const errorMessage = error.message;
                 setLoginData(prevData => {
                     return {
                         emailAdress:"",
                         password:"",
-                        error:error.message}})
-                // const errorCode = error.code;
-                // const errorMessage = error.message;
-                console.log("New sign in failed:", error);
+                        error:`Error: ${errorCode}`}})
+             
+                console.log("New sign in failed:");
               });
-        
-        
     }
     return (
         <div className="container flex mx-auto max-w-screen-md h-screen items-center">
@@ -67,6 +68,7 @@ export default function Login() {
                     <h1 className="flex justify-center w-full">
                         <img src="https://scrimba.com/blobs/sha1:d8f8311ae18fcd2b0d9bea85eb29a20e209518f8.png" alt="Instagram" className="w-2/4 mt-2 mb-4" />
                     </h1>
+                    {loginData.error && <p className="text-red-500 text-xs">{loginData.error}</p>}
                     <form onSubmit={handleSubmit}>
                         <input
                             aria-label="Enter your email adress"
