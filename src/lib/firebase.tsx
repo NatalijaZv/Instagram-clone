@@ -51,20 +51,20 @@ onAuthStateChanged(auth, (user) => {
 });
 
 
-signInWithEmailAndPassword(auth, "natalijazver929@gmail.com", "krneki")
-  .then((userCredential) => {
-    // Signed in
-    // const user = userCredential.user;
-    console.log("sign in succeeded:", userCredential);
+// signInWithEmailAndPassword(auth, "natalijazver929@gmail.com", "krneki")
+//   .then((userCredential) => {
+//     // Signed in
+//     // const user = userCredential.user;
+//     console.log("sign in succeeded:", userCredential);
 
-    seedDatabase(firebase);   //POMEMBNO!
-    // ...
-  })
-  .catch((error) => {
-    // const errorCode = error.code;
-    // const errorMessage = error.message;
-    console.log("sign in failed:", error);
-  });
+//     // seedDatabase(firebase);   //POMEMBNO!
+//     // ...
+//   })
+//   .catch((error) => {
+//     // const errorCode = error.code;
+//     // const errorMessage = error.message;
+//     console.log("sign in failed:", error);
+//   });
 
 
 export { firebase, FieldValue };

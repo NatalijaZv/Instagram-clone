@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <FirebaseContext.Provider value = {{firebase, FieldValue}}>
-  <App />
+    <App />
   </FirebaseContext.Provider>
 );
 
