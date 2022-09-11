@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from 'react';
+// import Header from '../components/header';
+// import Timeline from '../components/timeline';
+// import Sidebar from '../components/sidebar.js';
 
-const s : number = 1;
 export default function Dashboard(){
+    useEffect(()=>{
+        document.title = "Instagram";
+    },[])
     return(
         <p>Wellcome to Dashboard</p>
     )
