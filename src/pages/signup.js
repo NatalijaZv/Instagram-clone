@@ -9,7 +9,7 @@ import {
 import FirebaseContext from "../context/firebase";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { nanoid } from "nanoid";
-import doesUsernameExist from "../services/firebase";
+import {doesUsernameExist} from "../services/firebase";
 
 export default function SignUp() {
   const [signUpData, setSignUpData] = useState({
@@ -79,7 +79,7 @@ export default function SignUp() {
 
           const db = getFirestore(firebase);
           await addDoc(collection(db, "users"), {
-            userId: nanoid(),
+            userId: auth.currentUser.uid,
             username: signUpData.username,
             fullName: signUpData.fullName,
             emailAddress: signUpData.emailAdress,

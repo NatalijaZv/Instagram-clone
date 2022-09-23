@@ -42,7 +42,7 @@ export default function Login() {
       .then((userCredential) => {
         // Signed in
         // const user = userCredential.user;
-        console.log("New sign is succeeded:", userCredential);
+        console.log("New sign in is succeeded:", userCredential);
         navigate(ROUTES.DASHBOARD)
       })
       .catch((error) => {

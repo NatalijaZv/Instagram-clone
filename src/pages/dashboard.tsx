@@ -1,13 +1,20 @@
 import React, { useEffect } from 'react';
-// import Header from '../components/header';
-// import Timeline from '../components/timeline';
-// import Sidebar from '../components/sidebar.js';
-
-export default function Dashboard(){
-    useEffect(()=>{
+import Header from '../components/header.js';
+import Timeline from '../components/timeline.js';
+import Sidebar from '../components/sidebar.js';
+export default function Dashboard() {
+    useEffect(() => {
         document.title = "Instagram";
-    },[])
-    return(
-        <p>Wellcome to Dashboard</p>
+    }, [])
+    return (
+        <div className=' bg-gray-200 '>
+            <Header />
+            <div className='grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg'>
+                <Timeline />
+                <Sidebar />
+            </div>
+
+
+        </div>
     )
 }
