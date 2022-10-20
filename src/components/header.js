@@ -19,20 +19,7 @@ export default function Header() {
       console.error(error);
     }
   }
-  // function handleSignOut(event) {
-  //   event.preventDefault();
-  //   setUser((prevUser) => !prevUser);
-  //   console.log("dela");
-  //   const auth = getAuth();
-  //   signOut(auth)
-  //     .then(() => {
-  //       console.log("successful");
-  //       // Sign-out successful.
-  //     })
-  //     .catch((error) => {
-  //       // An error happened.
-  //     });
-  // }
+
   return (
     <header className="h-16 bg-white mb-8 border-b ">
       <div className="container mx-auto  max-width-lg  h-full ">

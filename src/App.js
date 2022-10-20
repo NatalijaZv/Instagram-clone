@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import * as ROUTES from './constants/routes';
 import UserContext from './context/user';
 import useAuthListener from './hooks/use-Auth-Listener';
@@ -21,6 +20,8 @@ const NotFound = React.lazy(() => import("./pages/not-found"));
 
 export default function App() {
   const {user} = useAuthListener()
+  //AUTH user 
+  console.log("APP USER", user)
   return (
     <UserContext.Provider value = {{user}}>
       <React.Suspense fallback={<h1>Loading routes...</h1>}>

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import Header from '../components/header.js';
 import Timeline from '../components/timeline.js';
-import Sidebar from '../components/sidebar.js';
+import Sidebar from '../components/sidebar/index.js';
 export default function Dashboard() {
     useEffect(() => {
         document.title = "Instagram";
     }, [])
     return (
-        <div className=' bg-gray-200 '>
+        <div className=' bg-gray-background '>
             <Header />
-            <div className='grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg'>
+            <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
                 <Timeline />
                 <Sidebar />
             </div>
