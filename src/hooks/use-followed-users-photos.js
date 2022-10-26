@@ -21,6 +21,7 @@ export default function useFollowedUsersPhotos() {
       //currentUserData - info o trenutnem uporabniku
       const [currentUserData] = await getUserByUserId(userId)
       console.log(currentUserData.following)
+      //slike od userja, ki ga followam
       let followedUserPhotos = []
 
       if(currentUserData && currentUserData.following.length > 0){

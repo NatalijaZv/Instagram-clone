@@ -6,7 +6,7 @@ import useFollowedUsersPhotos from "../hooks/use-followed-users-photos";
 import Post from "./post";
 export default function Timeline() {
   const { photos } = useFollowedUsersPhotos();
-
+console.log(photos)
 
   return (
     <div className="container col-span-2">
