@@ -1,5 +1,4 @@
 import React from "react";
-import useUser from "../hooks/use-user";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import useFollowedUsersPhotos from "../hooks/use-followed-users-photos";

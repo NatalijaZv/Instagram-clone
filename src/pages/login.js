@@ -41,7 +41,6 @@ export default function Login() {
     signInWithEmailAndPassword(auth, loginData.emailAdress, loginData.password)
       .then((userCredential) => {
         // Signed in
-        // const user = userCredential.user;
         console.log("New sign in is succeeded:", userCredential);
         navigate(ROUTES.DASHBOARD)
       })

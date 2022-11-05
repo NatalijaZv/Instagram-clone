@@ -1,10 +1,7 @@
-import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
 import React, { useState } from "react";
-import { firebase } from "../../lib/firebase";
 import { Link } from "react-router-dom";
 import { updateMyFollowing, updateFollowedUsersFollowers } from "../../services/firebase";
 
-//userDocId
 export default function SuggestedProfile({
   userId,
   userDocId,

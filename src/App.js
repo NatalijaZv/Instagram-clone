@@ -10,7 +10,7 @@ import {
   Link,
   Navigate,
 } from "react-router-dom";
-// import Login from './pages/login';
+
 
 const Dashboard = React.lazy(() => import("./pages/dashboard"));
 const Login = React.lazy(() => import("./pages/login"));

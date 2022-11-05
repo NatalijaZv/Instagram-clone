@@ -22,16 +22,6 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 const FieldValue = getFirestore(firebase);
 
-// firestore.doc('cities')
-
-// async function getCities(db) {
-//     const citiesCol = collection(db, 'cities');
-//     const citySnapshot = await getDocs(citiesCol);
-//     const cityList = citySnapshot.docs.map(doc => doc.data());
-//     return cityList;
-//   }
-// const c = await getCities(firestore);
-// console.log (c);
 
 const auth = getAuth();
 console.log(auth, "auth obj");
@@ -50,21 +40,6 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-
-// signInWithEmailAndPassword(auth, "natalijazver929@gmail.com", "krneki")
-//   .then((userCredential) => {
-//     // Signed in
-//     // const user = userCredential.user;
-//     console.log("sign in succeeded:", userCredential);
-
-//     // seedDatabase(firebase);   //POMEMBNO!
-//     // ...
-//   })
-//   .catch((error) => {
-//     // const errorCode = error.code;
-//     // const errorMessage = error.message;
-//     console.log("sign in failed:", error);
-//   });
 
 
 export { firebase, FieldValue };

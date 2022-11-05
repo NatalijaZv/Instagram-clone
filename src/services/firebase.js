@@ -13,7 +13,7 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import { firebase } from "../lib/firebase";
-import useUser from "../hooks/use-user";
+
 
 export async function doesUsernameExist(username) {
   const db = getFirestore(firebase);
@@ -160,18 +160,6 @@ export async function isUserFollowingProfile(myUserId,profileUserId){
 
   return !!response.fullName
 }
-
-// export async function isUserFollowingProfile(activeUsername, profileUserId){
-//   const db = getFirestore(firebase)
-//   const q = query(collection(db,"users"),where("username","==",activeUsername),where("following","array-contains",profileUserId))
-//   const queryShapshot = await getDocs(q)
-//   const [response ={}] = queryShapshot.docs.map((item) => ({
-//    ...item.data(),
-//    docId: item.id,
-//  }));
-//  console.log(response)
-//  return !!response.fullName
-// }
 
 export async function getProfilePhotoByUsername(username){
 

@@ -8,7 +8,6 @@ import {
 } from "firebase/auth";
 import FirebaseContext from "../context/firebase";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { nanoid } from "nanoid";
 import {doesUsernameExist} from "../services/firebase";
 
 export default function SignUp() {
@@ -101,7 +100,6 @@ export default function SignUp() {
             error: errorMessage,
           };
         });
-        // console.log(errorMessage);
       }
     }
   }

@@ -7,7 +7,6 @@ import * as ROUTES from "../constants/routes"
 
 export default function Profile() {
     const { username } = useParams()
-    console.log(username)
     const [userExist, setUserExist] = useState(undefined)
     const navigate = useNavigate()
     useEffect(() => {

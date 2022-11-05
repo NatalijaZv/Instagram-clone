@@ -11,7 +11,6 @@ export default function useUser(){
     useEffect(()=>{
         async function getUserObjByUserId(){
            const [response] = await getUserByUserId(user.uid) 
-           console.log(response,"response user")
            setActiveUser({...response})
            console.log("active User", activeUser)
         }
@@ -20,5 +19,5 @@ export default function useUser(){
         }
     },[user])
     console.log(activeUser)
-    return {user : activeUser}//kaj to pomeni? da returnaš activeuserja pod imenom user?
+    return {user : activeUser}
 }

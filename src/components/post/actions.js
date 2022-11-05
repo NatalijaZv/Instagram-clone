@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { FieldValue, firebase } from "../../lib/firebase";
 import FirebaseContext from "../../context/firebase";
 import UserContext from "../../context/user";
 import {
