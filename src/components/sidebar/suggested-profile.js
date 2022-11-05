@@ -11,6 +11,7 @@ export default function SuggestedProfile({
   username,
   myDocId,
   myUserId,
+  profilePhoto
 }) {
   const [follow, setFollow] = useState(false);
   async function handleFollowUser() {
@@ -24,7 +25,7 @@ export default function SuggestedProfile({
       <div className="flex items-center justify-between ">
         <img
           className="w-8 h-8 object-cover rounded-full mr-3"
-          src="https://static.remove.bg/remove-bg-web/c05ac62d076574fad1fbc81404cd6083e9a4152b/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg"
+          src={profilePhoto}
           alt="Profile picture"
         />
         <Link className=" items-center" to={`/p/${username}`}>

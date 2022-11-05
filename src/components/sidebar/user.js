@@ -2,8 +2,8 @@ import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 
- function User({ username, fullName }) {
-     
+ function User({ username, fullName, profilePhoto }) {
+   console.log(profilePhoto)
   return (
     <div>
       {!username || !fullName ? (
@@ -16,7 +16,7 @@ import Skeleton from "react-loading-skeleton";
           <div className="flex items-center justify-between col-span-1">
             <img
               className="w-16 h-16 object-cover rounded-full mr-3"
-              src="https://static.remove.bg/remove-bg-web/c05ac62d076574fad1fbc81404cd6083e9a4152b/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg"
+              src={profilePhoto}
               alt="Profile picture"
             /> 
           </div>

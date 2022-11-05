@@ -7,13 +7,13 @@ import Suggestions from "./suggestions";
 export default function Sidebar() {
   // const data = useUser()
   const { photos } = useFollowedUsersPhotos();
-  const { user: { username, fullName, userId, docId, following } = {} } = useUser();
-  console.log(following)
+  const { user: { username, fullName, userId, docId, following, profilePhoto} = {} } = useUser();
+  
   return (
     <div className="p-4">
-        <User username={username} fullName={fullName} photo={photos}/>
+        <User username={username} fullName={fullName} photo={photos} profilePhoto={profilePhoto}/>
       
-        <Suggestions userId = {userId} following={following} docId = {docId}/>
+        <Suggestions userId = {userId} following={following} docId = {docId} myProfilePhoto={profilePhoto}/>
     </div>
   );
 }

@@ -4,9 +4,10 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import useFollowedUsersPhotos from "../hooks/use-followed-users-photos";
 import Post from "./post";
+
 export default function Timeline() {
   const { photos } = useFollowedUsersPhotos();
-console.log(photos)
+  console.log(photos);
 
   return (
     <div className="container col-span-2">
@@ -15,10 +16,10 @@ console.log(photos)
       ) : (
         <>
           {photos.map((photo) => (
-           <Post key={photo.docId} photo={photo} />
+            <Post key={photo.docId} photo={photo} />
           ))}
-          </>)
-      }
+        </>
+      )}
     </div>
   );
 }

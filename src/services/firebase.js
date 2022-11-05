@@ -10,7 +10,7 @@ import {
   limit,
   updateDoc,
   arrayUnion,
-  arrayRemove
+  arrayRemove,
 } from "firebase/firestore";
 import { firebase } from "../lib/firebase";
 import useUser from "../hooks/use-user";
@@ -35,7 +35,7 @@ export async function getUserByUserId(userUid) {
     ...user.data(),
     docId: user.id,
   }));
-  console.log(user);
+ 
   return user;
 }
 
@@ -83,25 +83,104 @@ export async function getSuggestedProfiles(userId, following) {
   return notFollowedProfiles;
 }
 
-export async function updateMyFollowing(userId,myDocId, isFollowingProfile){
+export async function updateMyFollowing(userId, myDocId, isFollowingProfile) {
   const db = getFirestore(firebase);
   const dbRef = doc(db, "users", myDocId);
-  if(isFollowingProfile){
-    await updateDoc(dbRef,{following:arrayRemove(userId)})
+  if (isFollowingProfile) {
+    await updateDoc(dbRef, { following: arrayRemove(userId) });
+  } else {
+    await updateDoc(dbRef, { following: arrayUnion(userId) });
   }
-  else{
-    await updateDoc(dbRef, {following: arrayUnion(userId) })
-  }
-  ;
 }
 
-export async function updateFollowedUsersFollowers(myUserId,userDocId, isFollowingProfile){
+export async function updateFollowedUsersFollowers(
+  myUserId,
+  userDocId,
+  isFollowingProfile
+) {
   const db = getFirestore(firebase);
   const dbRef = doc(db, "users", userDocId);
-   if(isFollowingProfile){
-    await updateDoc(dbRef,{followers:arrayRemove(myUserId)})
+  if (isFollowingProfile) {
+    await updateDoc(dbRef, { followers: arrayRemove(myUserId) });
+  } else {
+    await updateDoc(dbRef, { followers: arrayUnion(myUserId) });
   }
-  else{
-    await updateDoc(dbRef, {followers: arrayUnion(myUserId) })
-  }
+}
+
+export async function getUserByUsername(username) {
+  const db = getFirestore(firebase);
+  const q = query(collection(db, "users"), where("username", "==", username));
+  const queryShapshot = await getDocs(q);
+  const user = queryShapshot.docs.map((user) => ({
+    ...user.data(),
+    docId: user.id,
+  }));
+
+  return user.length > 0 ? user : false;
+}
+export async function getUserIdByUsername(username) {
+  const db = getFirestore(firebase);
+  const q = query(collection(db, "users"), where("username", "==", username));
+  const queryShapshot = await getDocs(q);
+  const [{ userId = null }] = queryShapshot.docs.map((user) => ({
+    ...user.data(),
+    docId: user.id,
+  }));
+  console.log(userId);
+  return userId;
+}
+
+export async function getUserPhotosByUsername(username) {
+  const userId = await getUserIdByUsername(username);
+  const db = getFirestore(firebase);
+  const q = query(collection(db, "photos"), where("userId", "==", userId));
+  const queryShapshot = await getDocs(q);
+  const photos = queryShapshot.docs.map((photo) => ({
+    ...photo.data(),
+    docId: photo.id,
+  }));
+  console.log(photos);
+  return photos.length > 0 ? photos : [];
+}
+
+export async function toggleFollow(profileId, myDocId,myUserId,userDocId,isFollowingProfile) {
+  await updateMyFollowing(profileId, myDocId, isFollowingProfile);
+  await updateFollowedUsersFollowers(myUserId, userDocId, isFollowingProfile);
+}
+
+export async function isUserFollowingProfile(myUserId,profileUserId){
+   const db = getFirestore(firebase)
+   const q = query(collection(db,"users"),where("userId","==",myUserId), where("following","array-contains",profileUserId))
+   const queryShapshot = await getDocs(q)
+   const [response ={}] = queryShapshot.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+  console.log(response);
+
+  return !!response.fullName
+}
+
+// export async function isUserFollowingProfile(activeUsername, profileUserId){
+//   const db = getFirestore(firebase)
+//   const q = query(collection(db,"users"),where("username","==",activeUsername),where("following","array-contains",profileUserId))
+//   const queryShapshot = await getDocs(q)
+//   const [response ={}] = queryShapshot.docs.map((item) => ({
+//    ...item.data(),
+//    docId: item.id,
+//  }));
+//  console.log(response)
+//  return !!response.fullName
+// }
+
+export async function getProfilePhotoByUsername(username){
+
+  const db = getFirestore(firebase);
+  const q = query(collection(db, "users"), where("username", "==", username));
+  const queryShapshot = await getDocs(q);
+  const [{ profilePhoto = null }] = queryShapshot.docs.map((user) => ({
+    ...user.data(),
+    docId: user.id,
+  }));
+  return profilePhoto;
 }

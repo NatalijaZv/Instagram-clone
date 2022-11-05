@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import { getSuggestedProfiles } from "../../services/firebase";
 import SuggestedProfile from "./suggested-profile";
 
-function Suggestions({ userId, following, docId }) {
+function Suggestions({ userId, following, docId, myProfilePhoto }) {
   const [profiles, setProfile] = useState(null);
   useEffect(() => {
     async function suggestedProfiles() {
@@ -31,6 +31,7 @@ function Suggestions({ userId, following, docId }) {
             username={profil.username}
             myDocId={docId}
             myUserId={userId}
+            profilePhoto={profil.profilePhoto}
           />
         );
       })}

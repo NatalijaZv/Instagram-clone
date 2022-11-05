@@ -1,25 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import * as ROUTES from "../constants/routes";
 import { Link } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 import UserContext from "../context/user";
 
 export default function Header() {
-  // const user = true;
+  
   const { user } = useContext(UserContext);
-  console.log(user);
-
   async function handleSignOut() {
     const auth = getAuth();
     try {
       await signOut(auth);
-      console.log("User Sign out");
-      // setUser("")
+     
     } catch (error) {
-      console.error(error);
+     
     }
   }
-
   return (
     <header className="h-16 bg-white mb-8 border-b ">
       <div className="container mx-auto  max-width-lg  h-full ">

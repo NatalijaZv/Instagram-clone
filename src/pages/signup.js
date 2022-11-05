@@ -86,6 +86,7 @@ export default function SignUp() {
             following: [],
             followers: [],
             dateCreated: Date.now(),
+            profilePhoto:"",
           });
           await navigate(ROUTES.DASHBOARD);
         }
